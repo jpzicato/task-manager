@@ -1,18 +1,8 @@
 import { makeExecutableSchema } from '@graphql-tools/schema';
 import merge from 'lodash.merge';
-import gql from 'graphql-tag';
+import { typeDefs as User, resolvers as userResolvers } from './user/index.js';
 
 export default makeExecutableSchema({
-  typeDefs: [
-    gql`
-      type Query {
-        hello: String
-      }
-    `,
-  ],
-  resolvers: merge({
-    Query: {
-      hello: () => 'world',
-    },
-  }),
+  typeDefs: [User],
+  resolvers: merge(userResolvers),
 });
