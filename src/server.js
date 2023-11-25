@@ -7,6 +7,7 @@ import cors from 'cors';
 import schema from './schema/index.js';
 import logger from './logs/logger.js';
 import envVars from './config/envVars.js';
+import auth from './middlewares/auth.js';
 
 try {
   const app = express();
@@ -20,7 +21,15 @@ try {
 
   await server.start();
 
-  app.use('/', cors(), json(), expressMiddleware(server));
+  app.use(
+    '/',
+    auth,
+    cors(),
+    json(),
+    expressMiddleware(server, {
+      context: async ({ req: { userId, error } }) => ({ userId, error }),
+    })
+  );
 
   await new Promise(resolve =>
     httpServer.listen({ port: envVars.PORT }, resolve)
