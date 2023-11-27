@@ -1,5 +1,6 @@
 import { Schema, model } from 'mongoose';
 import bcrypt from 'bcryptjs';
+import Task from './task.js';
 
 const userSchema = new Schema(
   {
@@ -49,5 +50,11 @@ userSchema.static('hashPassword', password => bcrypt.hash(password, 16));
 userSchema.static('comparePassword', (password, hash) =>
   bcrypt.compare(password, hash)
 );
+
+userSchema.method('getTasks', function () {
+  return Task.find({
+    userId: this._id,
+  });
+});
 
 export default model('User', userSchema);
