@@ -34,6 +34,7 @@ export default gql`
     email: String!
     createdAt: String!
     updatedAt: String!
+    tasks: [Task]!
   }
 
   type Query {

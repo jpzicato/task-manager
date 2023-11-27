@@ -9,6 +9,12 @@ import handleValidationError from '../../utils/handleValidationError.js';
 const { REFRESH_TOKEN_SECRET } = envVars;
 
 export default {
+  User: {
+    tasks: async parent => {
+      return parent.getTasks();
+    },
+  },
+
   Query: {
     user: async (_, __, { userId, error }) => {
       if (error) {
