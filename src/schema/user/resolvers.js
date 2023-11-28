@@ -5,6 +5,7 @@ import envVars from '../../config/envVars.js';
 import { passwordsMatchValidation } from '../../validators/auth.js';
 import { updateUserValidation } from '../../validators/users.js';
 import handleValidationError from '../../utils/handleValidationError.js';
+import Task from '../../models/task.js';
 
 const { REFRESH_TOKEN_SECRET } = envVars;
 
@@ -161,6 +162,15 @@ export default {
       });
 
       await User.findByIdAndDelete(userId);
+
+      await Task.updateMany(
+        {
+          userId,
+        },
+        {
+          userId: null,
+        }
+      );
 
       return 'User successfully deleted';
     },
