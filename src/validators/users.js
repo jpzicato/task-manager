@@ -4,11 +4,7 @@ const stringFieldValidation = Joi.string();
 
 export const updateUserValidation = Joi.object({
   name: stringFieldValidation.min(3).max(30),
-  email: stringFieldValidation
-    .pattern(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)
-    .messages({
-      'string.pattern.base': 'The provided email is not a valid email',
-    }),
+  email: stringFieldValidation,
   password: stringFieldValidation
     .pattern(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{8,}$/)
     .messages({
