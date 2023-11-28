@@ -123,11 +123,9 @@ export default {
         throw genGraphQLError(msg, code);
       }
 
-      const { name, email, password } = edits;
+      const { name, password } = edits;
 
       if (name) edits.name = name.trim();
-
-      if (email) edits.email = email.trim();
 
       const errorMsg = handleValidationError(updateUserValidation, edits);
 
@@ -145,6 +143,7 @@ export default {
 
       const updatedUser = await User.findByIdAndUpdate(userId, edits, {
         returnDocument: 'after',
+        runValidators: true,
       });
 
       return updatedUser;
