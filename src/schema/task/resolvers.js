@@ -1,6 +1,6 @@
 import Task from '../../models/task.js';
 import genGraphQLError from '../../utils/genGraphQLError.js';
-import validateObjectId from '../../utils/validateObjectId.js';
+import validateIdAndFindModel from '../../utils/validateIdAndFindModel.js';
 
 export default {
   Task: {
@@ -25,7 +25,7 @@ export default {
         throw genGraphQLError(msg, code);
       }
 
-      if (!validateObjectId(id) || !(await Task.findById(id)))
+      if (!(await validateIdAndFindModel(id, Task)))
         throw genGraphQLError(
           `No task found with the id ${id}`,
           'TASK_NOT_FOUND'
@@ -33,7 +33,7 @@ export default {
 
       const foundTask = await Task.findById(id);
 
-      if (foundTask.userId.toString() !== userId)
+      if (foundTask.userId?.toString() !== userId)
         throw genGraphQLError(
           `User id ${userId} cannot see non-own tasks`,
           'FORBIDDEN'
@@ -79,7 +79,7 @@ export default {
         throw genGraphQLError(msg, code);
       }
 
-      if (!validateObjectId(id) || !(await Task.findById(id)))
+      if (!(await validateIdAndFindModel(id, Task)))
         throw genGraphQLError(
           `No task found with the id ${id}`,
           'TASK_NOT_FOUND'
@@ -87,7 +87,7 @@ export default {
 
       const foundTask = await Task.findById(id);
 
-      if (foundTask.userId.toString() !== userId)
+      if (foundTask.userId?.toString() !== userId)
         throw genGraphQLError(
           `User id ${userId} cannot update non-own tasks`,
           'FORBIDDEN'
@@ -106,7 +106,7 @@ export default {
         throw genGraphQLError(msg, code);
       }
 
-      if (!validateObjectId(id) || !(await Task.findById(id)))
+      if (!(await validateIdAndFindModel(id, Task)))
         throw genGraphQLError(
           `No task found with the id ${id}`,
           'TASK_NOT_FOUND'
@@ -114,7 +114,7 @@ export default {
 
       const foundTask = await Task.findById(id);
 
-      if (foundTask.userId.toString() !== userId)
+      if (foundTask.userId?.toString() !== userId)
         throw genGraphQLError(
           `User id ${userId} cannot delete non-own tasks`,
           'FORBIDDEN'
