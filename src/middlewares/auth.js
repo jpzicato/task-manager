@@ -4,9 +4,7 @@ import envVars from '../config/envVars.js';
 
 export default async (req, _, next) => {
   try {
-    const authHeader = req.headers.authorization;
-
-    const accessToken = authHeader && authHeader.split(' ')[1];
+    const accessToken = req.headers.authorization?.split(' ')[1];
 
     if (!accessToken) {
       req.error = {
