@@ -38,16 +38,16 @@ export default gql`
   }
 
   type Query {
-    user: User
+    user: User!
   }
 
   type Mutation {
-    signUp(input: SignUpInput!): Tokens
-    logIn(input: LogInInput!): Tokens
-    renewAccessToken(input: RefreshTokenInput!): Tokens
-    logOut(input: RefreshTokenInput!): String
+    signUp(input: SignUpInput!): Tokens!
+    logIn(input: LogInInput!): Tokens!
+    renewAccessToken(input: RefreshTokenInput!): Tokens!
+    logOut(input: RefreshTokenInput!): String!
 
-    updateUser(edits: UpdateUserInput!): User
-    deleteUser: String
+    updateUser(edits: UpdateUserInput!): User!
+    deleteUser: String!
   }
 `;
