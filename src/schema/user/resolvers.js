@@ -163,14 +163,9 @@ export default {
 
       await User.findByIdAndDelete(userId);
 
-      await Task.updateMany(
-        {
-          userId,
-        },
-        {
-          userId: null,
-        }
-      );
+      await Task.deleteMany({
+        userId,
+      });
 
       return 'User successfully deleted';
     },
