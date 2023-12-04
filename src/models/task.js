@@ -46,7 +46,6 @@ const taskSchema = new Schema(
     labelId: {
       type: Types.ObjectId,
       ref: 'Label',
-      default: null,
     },
   },
   {
@@ -54,6 +53,16 @@ const taskSchema = new Schema(
     versionKey: false,
   }
 );
+
+taskSchema.pre('save', async function (next) {
+  const { _id } = await Label.findOne({
+    name: 'STANDBY',
+  });
+
+  this.labelId = _id;
+
+  next();
+});
 
 taskSchema.static('getLabelId', async labelName => {
   const { _id } = await Label.findOne({
