@@ -7,11 +7,23 @@ export default gql`
     COMPLETED
   }
 
+  enum TaskLabel {
+    URGENT
+    IMPORTANT
+    WORK
+    PERSONAL
+    MEETINGS
+    STANDBY
+    PLANNING
+    TRACKING
+  }
+
   input CreateTaskInput {
     name: String!
     description: String!
     dueDate: String!
     status: TaskStatus
+    label: TaskLabel
   }
 
   input UpdateTaskInput {
@@ -19,6 +31,7 @@ export default gql`
     description: String
     dueDate: String
     status: TaskStatus
+    label: TaskLabel
   }
 
   type Task {
@@ -30,6 +43,7 @@ export default gql`
     createdAt: String!
     updatedAt: String!
     user: User!
+    label: Label
   }
 
   extend type Query {

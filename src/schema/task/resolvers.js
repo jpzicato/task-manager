@@ -5,6 +5,8 @@ import validateIdAndFindModel from '../../utils/validateIdAndFindModel.js';
 export default {
   Task: {
     user: async parent => parent.getUser(),
+
+    label: async parent => parent.getLabel(),
   },
 
   Query: {
@@ -51,7 +53,7 @@ export default {
         throw genGraphQLError(msg, code);
       }
 
-      const { name, description, dueDate } = task;
+      const { name, description, dueDate, label } = task;
 
       const foundTask = await Task.findOne({
         name,
@@ -65,6 +67,8 @@ export default {
           `A task with the same name, description and due date already exists for user id ${userId}`,
           'CONFLICT'
         );
+
+      if (label) task.labelId = await Task.getLabelId(label);
 
       return Task.create({
         ...task,
@@ -92,6 +96,10 @@ export default {
           `User id ${userId} cannot update non-own tasks`,
           'FORBIDDEN'
         );
+
+      const { label } = edits;
+
+      if (label) edits.labelId = await Task.getLabelId(label);
 
       return await Task.findByIdAndUpdate(id, edits, {
         returnDocument: 'after',
