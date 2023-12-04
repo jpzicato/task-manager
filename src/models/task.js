@@ -1,5 +1,6 @@
 import { Schema, Types, model } from 'mongoose';
 import User from './user.js';
+import Label from './label.js';
 
 const taskSchema = new Schema(
   {
@@ -36,12 +37,16 @@ const taskSchema = new Schema(
       type: String,
       enum: ['PENDING', 'PROCESSING', 'COMPLETED'],
       default: 'PENDING',
-      required: true,
     },
     userId: {
       type: Types.ObjectId,
       ref: 'User',
       required: true,
+    },
+    labelId: {
+      type: Types.ObjectId,
+      ref: 'Label',
+      default: null,
     },
   },
   {
@@ -50,8 +55,20 @@ const taskSchema = new Schema(
   }
 );
 
+taskSchema.static('getLabelId', async labelName => {
+  const { _id } = await Label.findOne({
+    name: labelName,
+  });
+
+  return _id.toString();
+});
+
 taskSchema.method('getUser', function () {
   return User.findById(this.userId);
+});
+
+taskSchema.method('getLabel', function () {
+  return Label.findById(this.labelId);
 });
 
 export default model('Task', taskSchema);
