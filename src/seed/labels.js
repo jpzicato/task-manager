@@ -2,28 +2,28 @@ export default {
   name: 'Labels',
   data: [
     {
-      name: 'Urgent',
+      name: 'URGENT',
     },
     {
-      name: 'Important',
+      name: 'IMPORTANT',
     },
     {
-      name: 'Work',
+      name: 'WORK',
     },
     {
-      name: 'Personal',
+      name: 'PERSONAL',
     },
     {
-      name: 'Meetings',
+      name: 'MEETINGS',
     },
     {
-      name: 'Standby',
+      name: 'STANDBY',
     },
     {
-      name: 'Planning',
+      name: 'PLANNING',
     },
     {
-      name: 'Tracking',
+      name: 'TRACKING',
     },
   ],
 };
