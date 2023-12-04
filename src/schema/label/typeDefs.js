@@ -10,10 +10,4 @@ export default gql`
     labels: [Label]!
     label(id: ID!): Label!
   }
-
-  extend type Mutation {
-    addTaskToLabel(labelId: ID!, taskId: ID!): Label!
-    updateTaskFromLabel(labelId: ID!, taskId: ID!): Label!
-    removeTaskFromLabel(taskId: ID!): String!
-  }
 `;
