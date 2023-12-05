@@ -17,7 +17,9 @@ export default {
         throw genGraphQLError(msg, code);
       }
 
-      return Task.find({ userId });
+      return Task.find({
+        userId,
+      });
     },
 
     task: async (_, { id }, { userId, error }) => {
