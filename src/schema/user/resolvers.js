@@ -6,6 +6,7 @@ import { passwordsMatchValidation } from '../../validators/auth.js';
 import { updateUserValidation } from '../../validators/users.js';
 import handleValidationError from '../../utils/handleValidationError.js';
 import Task from '../../models/task.js';
+import Project from '../../models/project.js';
 
 const { REFRESH_TOKEN_SECRET } = envVars;
 
@@ -164,6 +165,10 @@ export default {
       await User.findByIdAndDelete(userId);
 
       await Task.deleteMany({
+        userId,
+      });
+
+      await Project.deleteMany({
         userId,
       });
 
