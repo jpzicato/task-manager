@@ -1,4 +1,5 @@
 import Task from '../../models/task.js';
+import Project from '../../models/project.js';
 import genGraphQLError from '../../utils/genGraphQLError.js';
 import validateIdAndFindModel from '../../utils/validateIdAndFindModel.js';
 
@@ -131,6 +132,8 @@ export default {
         );
 
       await Task.findByIdAndDelete(id);
+
+      await Project.removeTask(id);
 
       return 'Task successfully deleted';
     },
