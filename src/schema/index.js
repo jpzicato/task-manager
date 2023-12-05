@@ -6,8 +6,17 @@ import {
   typeDefs as Label,
   resolvers as labelResolvers,
 } from './label/index.js';
+import {
+  typeDefs as Project,
+  resolvers as projectResolvers,
+} from './project/index.js';
 
 export default makeExecutableSchema({
-  typeDefs: [User, Task, Label],
-  resolvers: merge(userResolvers, taskResolvers, labelResolvers),
+  typeDefs: [User, Task, Label, Project],
+  resolvers: merge(
+    userResolvers,
+    taskResolvers,
+    labelResolvers,
+    projectResolvers
+  ),
 });
