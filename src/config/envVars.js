@@ -3,8 +3,6 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const requiredVariables = [
-  'MONGODB_HOST',
-  'MONGODB_PORT',
   'MONGODB_NAME',
   'PORT',
   'ACCESS_TOKEN_SECRET',
