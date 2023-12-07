@@ -36,7 +36,7 @@ Para comenzar con task manager, sigue estos pasos:
 2. Navega al directorio task-manager:
 
    ```bash
-   cd inventory_flow
+   cd task-manager
    ```
 
 3. Crea un archivo .env basado en el archivo .env.example proporcionado y completa las variables de configuración necesarias.
