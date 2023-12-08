@@ -1,6 +1,6 @@
 # Task manager
 
-Task manager es una aplicación desarrollada en Node.js con Apollo Server y GraphQL. Permite a los usuarios crear, asignar y dar seguimiento a tareas de manera eficiente. Organiza tus proyectos y tareas, establece fechas de vencimiento y mantén un control claro de tus responsabilidades diarias con esta aplicación de gestión de tareas.
+Task manager es una aplicación GraphQL desarrollada en Node.js con Apollo Server. Permite a los usuarios crear, asignar y dar seguimiento a tareas de manera eficiente. Organiza tus proyectos y tareas, establece fechas de vencimiento y mantén un control claro de tus responsabilidades diarias con esta aplicación de gestión de tareas.
 
 ## Tecnologías utilizadas
 
