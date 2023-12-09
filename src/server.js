@@ -6,7 +6,6 @@ import http from 'http';
 import cors from 'cors';
 import schema from './schema/index.js';
 import logger from './logs/logger.js';
-import envVars from './config/envVars.js';
 import auth from './middlewares/auth.js';
 
 try {
@@ -32,7 +31,12 @@ try {
   );
 
   await new Promise(resolve =>
-    httpServer.listen({ port: envVars.PORT }, resolve)
+    httpServer.listen(
+      {
+        port: 8080,
+      },
+      resolve
+    )
   );
 
   logger.info('Apollo server successfully started');
