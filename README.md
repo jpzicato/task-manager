@@ -62,7 +62,7 @@ Para comenzar con task manager, sigue estos pasos:
    - Construye una imagen Docker para tu aplicación. El uso de la etiqueta (-t) le da un nombre específico ("task-manager"). Asegúrate de estar en el directorio correcto antes de ejecutar este comando.
 
    ```bash
-    docker run --name task-manager --network task-manager -p 8080:8080 -d task-manager
+   docker run --name task-manager --network task-manager -p 8080:8080 task-manager
    ```
 
    Ejecuta un contenedor de tu aplicación utilizando la imagen "task-manager". Se conecta a la red "task-manager" y mapea el puerto 8080 del host, (utiliza otro puerto si 8080 ya se encuentra en uso), al puerto 8080 del contenedor. Nuevamente, el uso de un nombre (--name) facilita su gestión.
