@@ -5,4 +5,4 @@ import './db/mongodb.js';
 import './server.js';
 import './seed/index.js';
 
-logger.info(`Server listening on URL http://localhost:${envVars.PORT}/`);
+logger.info(`Server listening on URL http://localhost:${envVars.HOST_PORT}/`);

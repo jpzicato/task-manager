@@ -4,7 +4,7 @@ dotenv.config();
 
 const requiredVariables = [
   'MONGODB_NAME',
-  'PORT',
+  'HOST_PORT',
   'ACCESS_TOKEN_SECRET',
   'REFRESH_TOKEN_SECRET',
   'ACCESS_TOKEN_EXPIRATION',
