@@ -66,3 +66,19 @@ Para comenzar con task manager, sigue estos pasos:
    ```
 
    Ejecuta un contenedor de tu aplicación utilizando la imagen "task-manager". Se conecta a la red "task-manager" y mapea el puerto 8080 del host, (utiliza otro puerto si 8080 ya se encuentra en uso), al puerto 8080 del contenedor. Nuevamente, el uso de un nombre (--name) facilita su gestión.
+
+## Interfaz gráfica de Apollo
+
+Task manager utiliza la interfaz gráfica de Apollo (Apollo GraphQL Playground) para facilitar la interacción y exploración de la API GraphQL. Sigue estos pasos para acceder a la interfaz gráfica y realizar consultas:
+
+1. Una vez que hayas configurado y ejecutado la aplicación siguiendo los pasos anteriores, abre tu navegador web.
+
+2. Navega a la siguiente URL en tu navegador:
+
+- [Interfaz gráfica de Apollo](http://localhost:PORT/)
+
+Asegúrate de reemplazar `PORT` por el valor real de la variable de entorno utilizada por el microservicio de productos.
+
+3. Serás redirigido a la interfaz gráfica de Apollo, donde podrás explorar el esquema GraphQL de la aplicación y realizar consultas interactivas.
+
+4. Utiliza la interfaz gráfica para probar consultas, mutaciones y explorar la documentación dinámica generada automáticamente por Apollo.
