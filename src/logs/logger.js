@@ -2,11 +2,10 @@ import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import { format, transports, createLogger } from 'winston';
 
-const { combine, timestamp, printf } = format;
 const { Console, File } = transports;
+const { combine, timestamp, printf } = format;
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const logFormat = printf(({ timestamp, level, message }) => {
   return `${timestamp} [${level.toUpperCase()}]: ${message}`;
