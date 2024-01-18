@@ -20,4 +20,4 @@ const createCollection = async ({ name, data }, model) => {
   }
 };
 
-await createCollection(labels, Label);
+export default () => createCollection(labels, Label);

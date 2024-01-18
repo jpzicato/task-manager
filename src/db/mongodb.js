@@ -6,18 +6,20 @@ const { connect, connection } = mongoose;
 
 const { MONGODB_NAME } = envVars;
 
-try {
-  await connect(`mongodb://mongodb:27017/${MONGODB_NAME}`);
+export default async () => {
+  try {
+    await connect(`mongodb://mongodb:27017/${MONGODB_NAME}`);
 
-  connection.on('error', error => {
-    throw error;
-  });
+    connection.on('error', error => {
+      throw error;
+    });
 
-  logger.info('Connected to MongoDB');
-} catch (error) {
-  const errorMsg = `Error connecting to MongoDB: ${error}`;
+    logger.info('Connected to MongoDB');
+  } catch (error) {
+    const errorMsg = `Error connecting to MongoDB: ${error}`;
 
-  logger.error(errorMsg);
+    logger.error(errorMsg);
 
-  throw errorMsg;
-}
+    throw errorMsg;
+  }
+};
