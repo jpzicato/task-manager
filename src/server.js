@@ -3,9 +3,9 @@ import { expressMiddleware } from '@apollo/server/express4';
 import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
 import express, { json, urlencoded } from 'express';
 import { createServer } from 'http';
-import cors from 'cors';
 import schema from './schema/index.js';
-import auth from './middlewares/auth.js';
+import authMiddleware from './middlewares/auth.js';
+import corsMiddleware from './middlewares/cors.js';
 
 const app = express();
 
@@ -24,8 +24,8 @@ await server.start();
 
 app.use(
   '/',
-  auth,
-  cors(),
+  corsMiddleware,
+  authMiddleware,
   json(),
   urlencoded({
     extended: false,
