@@ -4,11 +4,9 @@ import logger from '../logs/logger.js';
 
 const { connect, connection } = mongoose;
 
-const { MONGODB_NAME } = envVars;
-
 export default async () => {
   try {
-    await connect(`mongodb://mongodb:27017/${MONGODB_NAME}`);
+    await connect(`mongodb://mongodb:27017/${envVars.MONGODB_NAME}`);
 
     connection.on('error', error => {
       throw error;
